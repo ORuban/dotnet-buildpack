@@ -64,7 +64,7 @@ if [ -n "$(find ${SRC_DIR}/global.json)" ]; then
 	CORE_VERSION=$(ruby -rjson -e "j = JSON.parse(File.open('${SRC_DIR}/global.json','r:bom|utf-8').read); unless j['sdk'].nil? ; puts j['sdk']['version'];end")
 	
 	# display version from global.json
-	echo CORE_VERSION
+	echo ".NET Core Version from global.json: ${CORE_VERSION}"
 	
 	if [ -z "${CORE_VERSION}" ]; then
 		CORE_VERSION="latest"
@@ -80,7 +80,7 @@ if [ -n "$(find ${SRC_DIR}/global.json)" ]; then
 	fi
 	
 	# display calculated .NET Core version
-	echo CORE_VERSION
+	echo "Final .NET Core Version: ${CORE_VERSION}"
 fi
 
 if [[ "${CORE_VERSION}" == "latest" && -e "${DEPLOYMENT_FILE_LOCATION}" ]]; then
