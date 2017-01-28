@@ -46,8 +46,8 @@ mkdir -p ${CACHE_DIR}
 if [[ -n $(find ${SRC_DIR} -type f -iname package.json -o -iname bower.json) ]]
 then
 	echo "Installing Node"
-	mkdir -p "$BUILD_DIR/.heroku/node/"
-	NODE_PATH="$BUILD_DIR/.heroku/node/"
+	mkdir -p "$BUILD_DIR/node/"
+	NODE_PATH="$BUILD_DIR/node/"
 	curl https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz -Ls \
 		| tar xz -C ${NODE_PATH}
 	echo $PATH
