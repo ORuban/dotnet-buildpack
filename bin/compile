@@ -80,8 +80,10 @@ if [ -n "$(find ${SRC_DIR}/global.json)" ]; then
 	fi
 	
 	# display calculated .NET Core version
-	echo "Final .NET Core Version: ${CORE_VERSION}"
+	echo "Calculated .NET Core Version: ${CORE_VERSION}"
 fi
+
+echo "TEMP:  .NET Core Version: ${CORE_VERSION}"
 
 if [[ "${CORE_VERSION}" == "latest" && -e "${DEPLOYMENT_FILE_LOCATION}" ]]; then
 	CORE_CHANNEL_TMP=$(awk -F "=" '/channel/ {print $2}' ${DEPLOYMENT_FILE_LOCATION} | tr -d ' ')
@@ -96,6 +98,7 @@ if [[ "${CORE_VERSION}" == "latest" ]]; then
 	CORE_VERSION_FIRST="Latest"
 fi
 
+echo "Final .NET Core Version: ${CORE_VERSION}"
 : ${CORE_DOWNLOAD_LOCATION:="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"}
 
 echo "Installing the dependencies"
