@@ -83,8 +83,6 @@ if [ -n "$(find ${SRC_DIR}/global.json)" ]; then
 	echo "Calculated .NET Core Version: ${CORE_VERSION}"
 fi
 
-echo "TEMP:  .NET Core Version: ${CORE_VERSION}"
-
 if [[ "${CORE_VERSION}" == "latest" && -e "${DEPLOYMENT_FILE_LOCATION}" ]]; then
 	CORE_CHANNEL_TMP=$(awk -F "=" '/channel/ {print $2}' ${DEPLOYMENT_FILE_LOCATION} | tr -d ' ')
 	if [ ! -z "${CORE_CHANNEL_TMP}" ]; then
@@ -98,8 +96,8 @@ if [[ "${CORE_VERSION}" == "latest" ]]; then
 	CORE_VERSION_FIRST="Latest"
 fi
 
-echo "Final .NET Core Version: ${CORE_VERSION}"
-: ${CORE_DOWNLOAD_LOCATION:="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"}
+CORE_DOWNLOAD_LOCATION="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"
+echo "Final .NET Core Version: ${CORE_VERSION}. Path: ${CORE_DOWNLOAD_LOCATION}"
 
 echo "Installing the dependencies"
 apt_install libunwind8 gettext
