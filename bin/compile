@@ -10,6 +10,8 @@ fi
 
 echo "Path: ${PATH}"
 npm -v
+which npm
+
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -42,6 +44,8 @@ SRC_DIR=`mktemp -d`
 	mv ${BUILD_DIR}/* ${SRC_DIR}
 )
 
+npm -v
+
 mkdir -p ${CACHE_DIR}
 
 # TODO: This test doesn't seen to actually work
@@ -65,6 +69,8 @@ mkdir -p ${CACHE_DIR}
 #	echo "Installing node modules"
 #	npm install -g --prefix $NODE_PATH
 #fi
+
+echo "Path: ${PATH}"
 
 # Install .NET Core
 echo "Get .NET Core Version and Channel from the PROJECT"
@@ -113,6 +119,9 @@ echo "Installing the dependencies"
 apt_install libunwind8 gettext
 
 mkdir -p ${BUILD_DIR}/dotnet
+
+echo "Path: ${PATH}"
+npm -v
 
 echo "Installing .NET CORE ${CORE_VERSION} from ${CORE_DOWNLOAD_LOCATION}"
 # dotnet-install.sh using `ldconfig` which search pkg in `/lib` or `/usr/lib`. So I change it to binaries.
