@@ -8,6 +8,8 @@ if [ $STACK != "cedar-14" ]; then
 	echo "Stack ${STACK} not supported" && exit 1
 fi
 
+npm -v
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
