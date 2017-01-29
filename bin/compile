@@ -52,6 +52,7 @@ then
 		| tar xz -C ${NODE_PATH}
 	echo $PATH
 	export PATH="${NODE_PATH}/node-v${NODE_VERSION}-linux-x64/bin:${PATH}"
+	export PATH="${NODE_PATH}/node_modules:${PATH}"
 	echo $PATH
 	echo "Installing bower"
 	if ! hash bower 2>/dev/null; then
