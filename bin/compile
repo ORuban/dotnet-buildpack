@@ -8,11 +8,6 @@ if [ $STACK != "cedar-14" ]; then
 	echo "Stack ${STACK} not supported" && exit 1
 fi
 
-echo "Path: ${PATH}"
-npm -v
-which npm
-
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
@@ -40,12 +35,18 @@ else
 	CORE_ENVIRONMENT=""
 fi
 
-SRC_DIR=`mktemp -d`
+echo "Path: ${PATH}"
+which npm
+npm -v
+
+#SRC_DIR=`mktemp -d`
 # Move the app source code into temporary src dir using subshell to not leak shopt
 (
-	shopt -s dotglob
-	mv ${BUILD_DIR}/* ${SRC_DIR}
+#	shopt -s dotglob
+#	mv ${BUILD_DIR}/* ${SRC_DIR}
 )
+
+SRC_DIR = "${BUILD_DIR}"
 
 echo "Path: ${PATH}"
 which npm
