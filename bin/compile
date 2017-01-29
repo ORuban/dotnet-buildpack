@@ -21,6 +21,9 @@ BUILDPACK_DIR=`cd $(dirname $0); cd ..; pwd`
 
 source $BUILDPACK_DIR/bin/util
 
+echo "Path: ${PATH}"
+which npm
+
 export_env_dir ${ENV_DIR}
 
 : ${CORE_VERSION:="latest"}
@@ -44,6 +47,8 @@ SRC_DIR=`mktemp -d`
 	mv ${BUILD_DIR}/* ${SRC_DIR}
 )
 
+echo "Path: ${PATH}"
+which npm
 npm -v
 
 mkdir -p ${CACHE_DIR}
