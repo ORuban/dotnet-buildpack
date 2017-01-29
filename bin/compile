@@ -57,6 +57,9 @@ then
 	if ! hash bower 2>/dev/null; then
 		npm install -g bower
 	fi
+	
+	echo "Installing node modules"
+	npm install --prefix $NODE_PATH
 fi
 
 # Install .NET Core
