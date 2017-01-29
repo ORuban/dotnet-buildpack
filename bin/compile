@@ -46,7 +46,7 @@ npm -v
 #	mv ${BUILD_DIR}/* ${SRC_DIR}
 #)
 
-SRC_DIR = "${BUILD_DIR}"
+SRC_DIR="${BUILD_DIR}"
 
 echo "Path: ${PATH}"
 which npm
